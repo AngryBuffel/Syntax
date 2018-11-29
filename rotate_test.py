@@ -10,6 +10,9 @@ grid = [['.', '.', '.', '.', '.', '.'],
         ['.', 'O', 'O', '.', '.', '.'],
         ['.', '.', '.', '.', '.', '.']]
 
-for y in range(3):
-    for x in range(2):
-        print(x,y)
+for y in range(6):
+    for x in range(9):
+        if x < 8:
+                print(grid[x][y], end='')
+        else:
+                print(grid[x][y])

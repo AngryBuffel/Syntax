@@ -75,12 +75,11 @@ grid = [['.', '.', '.', '.', '.', '.'],
         ['.', '.', '.', '.', '.', '.']]
 
 def rotate_matrix(anymatrix):
-    x, y = [0,0]
-    for col in range(len(anymatrix)):
-        for row in range(len(anymatrix[col])):
-            if row == len(anymatrix[col]):
-                print(anymatrix[row][col])
+    for y in range(6):
+        for x in range(9):
+            if x < 8:
+                print(grid[x][y], end='')
             else:
-                print(anymatrix[row][col], end='')
+                print(grid[x][y])
 
 rotate_matrix(grid)
