@@ -55,12 +55,13 @@ for i in range(int(n_fruits)):
 
 print(some_fruit)
 
+# 5.9 No Users - Empty list check
 if not some_fruit:
     print('We have no fruits!')
 
 for fruit in some_fruit:
-    # 5.8 Hello Admin - For Fruit
+    # 5.8/5.10 Hello Admin - List item search
     if fruit in favorite_fruit:
         print('You really like ' + fruit + '!')
     else:
-        print(fruit.upper() + ' is not one of your favorite friuts :(')
+        print(fruit.upper() + ' is not one of your favorite fruits :(')
