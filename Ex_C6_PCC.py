@@ -31,3 +31,25 @@ for k, v in glossary.items():
 for item in glossary.keys():
     print(item.title())
 # 6.5 Rivers
+rivers = {
+    'atoyac': 'oaxaca',
+    'usumacinta': 'chiapas',
+    'lerma': 'mexico',
+    }
+for n, c in rivers.items():
+    print('The river ' + n.title() + ' is located in the state of ' + c.title())
+# 6.6 Polling
+favorite_languages = {
+    'jen': 'python',
+    'sarah': 'c',
+    'edward': 'ruby',
+    'phil': 'python',
+    'fer': 'html',
+    'caro': 'javascript',
+    }
+poll_users = ['fer','jen','david','robert','caro','phil','edzard']
+for user in poll_users:
+    if user in favorite_languages.keys():
+        print('Thank you ' + user.title() + ' for taking the poll.')
+    else:
+        print(user.title() + ' please take the poll.')
