@@ -1,6 +1,6 @@
 # VDLS - 12/06/18 - Excercises Chaper 6 Python Crash Course
 # 6.1 - Person
-person = {
+person_1 = {
     'first_name': 'daniel',
     'last_name': 'aragon',
     'age': 25,
@@ -53,3 +53,21 @@ for user in poll_users:
         print('Thank you ' + user.title() + ' for taking the poll.')
     else:
         print(user.title() + ' please take the poll.')
+# 6.7 People
+person_2 = {
+    'first name': 'camila',
+    'last name': 'orozco',
+    'age': 18,
+    'city': 'leon',
+    }
+person_3 = {
+    'first name': 'yeya',
+    'last name': 'killove',
+    'age': 23,
+    'city': 'leon'
+    }
+people = [person_1, person_2, person_3]
+for person in people:
+    for u, i in person.items():
+        full_name = i['first name'] + " " + i['last name']
+        
