@@ -69,5 +69,6 @@ person_3 = {
 people = [person_1, person_2, person_3]
 for person in people:
     for u, i in person.items():
-        full_name = i['first name'] + " " + i['last name']
+        full_name = u.title() + " " + i.title()
+        print(full_name)
         
