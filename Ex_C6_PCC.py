@@ -55,20 +55,17 @@ for user in poll_users:
         print(user.title() + ' please take the poll.')
 # 6.7 People
 person_2 = {
-    'first name': 'camila',
-    'last name': 'orozco',
-    'age': 18,
-    'city': 'leon',
+    'first name': 'mariana',
+    'last name': 'villacaña',
+    'age': 25,
+    'city': 'mexico',
     }
 person_3 = {
-    'first name': 'yeya',
-    'last name': 'killove',
-    'age': 23,
+    'first name': 'david',
+    'last name': 'liceaga',
+    'age': 25,
     'city': 'leon'
     }
 people = [person_1, person_2, person_3]
 for person in people:
-    for u, i in person.items():
-        full_name = u.title() + " " + i.title()
-        print(full_name)
-        
+ for 
