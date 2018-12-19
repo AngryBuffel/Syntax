@@ -1,8 +1,8 @@
 # VDLS - 12/06/18 - Excercises Chaper 6 Python Crash Course
 # 6.1 - Person
 person_1 = {
-    'first_name': 'daniel',
-    'last_name': 'aragon',
+    'first': 'daniel',
+    'last': 'aragon',
     'age': 25,
     'city': 'toluca',
     }
@@ -55,17 +55,22 @@ for user in poll_users:
         print(user.title() + ' please take the poll.')
 # 6.7 People
 person_2 = {
-    'first name': 'mariana',
-    'last name': 'villacaña',
+    'first': 'mariana',
+    'last': 'villacaña',
     'age': 25,
     'city': 'mexico',
     }
 person_3 = {
-    'first name': 'david',
-    'last name': 'liceaga',
+    'first': 'david',
+    'last': 'liceaga',
     'age': 25,
     'city': 'leon'
     }
 people = [person_1, person_2, person_3]
 for person in people:
- for 
+    full_name = person['first'].title() + ' ' + person['last'].title()
+    age_loc = ' lives in ' + person['city'].title() + \
+            ' and is ' + str(person['age']) + ' years old.'
+    print(full_name + age_loc)
+
+# Excersices 6.8-6.12 are about the same topic as 6.7 only different dictionaries.
