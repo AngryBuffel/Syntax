@@ -45,3 +45,5 @@ while not pos_ints:
             # Main algorithm lööp, bröther.
             while euclid_active:
                 m, n, euclid_active = euclids_alg(m,n)
+
+# TODO: Change Algorithm E so that all trivial replacements operations "m <- n" are avoided.
