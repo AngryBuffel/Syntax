@@ -3,7 +3,7 @@
 # TODO: Explicit is better than implicit.
 
 import numpy as np
-from numpy.lib.scimath import *
+from numpy.lib.scimath import sqrt
 import random
 import time
 
