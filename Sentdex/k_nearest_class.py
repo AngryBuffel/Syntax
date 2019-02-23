@@ -3,7 +3,7 @@ import numpy as np
 from sklearn import preprocessing, model_selection, neighbors
 import pandas as pd
 
-df = pd.read_csv('BC_W.txt')
+df = pd.read_csv(r'C:\Users\liceaga\Desktop\Python_Work\Sentdex\Data_BC.txt')
 df.replace('?',-99999, inplace=True)
 df.drop(['id'], 1, inplace=True)
 

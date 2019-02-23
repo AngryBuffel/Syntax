@@ -93,6 +93,20 @@ print ('\ny_0 = {y:4.2f}, theta_0 = {t:4.2f}. \n'.format(y=y_[0],t=t_[0]))
 
 print('Searching for values...\n')
 
+
+
+conditions = [ c_ >= (n_iter - 1),
+    b_elem(y_[pm1],t_[pm1],k_[i],d_,E_[l],M_[j]) < 0,
+    ay==0. or aty ==0.,
+    gamasg < 0.,
+    abs(y_[p] - y_[pm1]) > 10 or abs(t_[p] - t_[pm1]) > 10]
+choices = [
+    file_object.write('{:7.5f}, {:7.5f}, {:7.5f}, {:7.5f}, {:7.5f}, {:7.5f}\n'.format(y_[0],t_[0],k_[i],d_,E_[l],M_[j])),
+    break,
+    break,
+    break,
+    break]
+
 # Iteration loops, i,j,l,n,p are iteration indexes
 # TODO: Turn iteration loop into a function.
 c2_ = 0 #tuple counter init
@@ -120,24 +134,11 @@ for i in list(range(0,num_div)):
                 c_ += 1
                     
     #Condiciones para encontrar valores
-                # TODO: np.select()    
-                if c_ >= (n_iter - 1):
-                    filename = 'fixed_d_search.txt'
-                    with open(filename, 'a') as file_object:
-                        file_object.write(str(y_[0])+','+str(t_[0])+','+str(k_[i])+','+str(d_)+','+str(E_[l])+','+str(M_[j])+'\n')
-                        #(y_[0],t_[0],k_,d_,E_,M_) tuple to unpack when file is read.
-                        c2_ += 1
-
-                elif b_elem(y_[pm1],t_[pm1],k_[i],d_,E_[l],M_[j]) < 0:
-                    break
-                elif ay==0. or aty ==0.:
-                    break
-                elif gamasg < 0.: #y_,t_ reales
-                    break
-                elif abs(y_[p] - y_[pm1]) > 10 or abs(t_[p] - t_[pm1]) > 10:
-                    break
-                #elif b_elem(y_[pm1],t_[pm1],k_[i],d_,E_[l],M_[j]) >= d_0:
-                #    break
+                # TODO: np.select() does not work
+                filename = 'fixed_d_search.txt'
+                with open(filename, 'a+') as file_object:    
+                    np.select(conditions,choices)
+                    c2_ += 1
 
 t1 = time.perf_counter()
 tf = float(t1 - t0); ns=num_div**3; print('\n\t{nc:} combinations were searched in {tt:7.2f} seconds.\n'.format(nc=ns,tt=tf))
@@ -148,3 +149,4 @@ else:
     print('\t\t\tNo tuples were found. :c\n\t\t\t\tTry again!!!\n')
 
 print('\t-----\t-----\t-----\tPROGRAM END\t-----\t-----\t-----')
+

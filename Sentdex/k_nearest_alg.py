@@ -27,7 +27,7 @@ def k_nearest_neighbors(data, predict, k=3):
     confidence = Counter(vote).most_common(1)[0][0]
 
     return vote_result, confidence
-df = pd.read_csv('BC_W.txt')
+df = pd.read_csv(r'C:\Users\liceaga\Desktop\Python_Work\Sentdex\Data_BC.txt')
 df.replace('?',-99999, inplace=True)
 df.drop(['id'], 1, inplace=True)
 # Convert data set into specific data type
