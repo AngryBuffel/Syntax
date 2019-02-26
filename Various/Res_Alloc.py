@@ -7,7 +7,7 @@
 # 3 .- Same PM, different PM.
 # 4 .- Different shift and PM.
 
-# Libraries import
+## Libraries import
 
 import sys
 import numpy as np
@@ -23,11 +23,11 @@ ws_df = pd.read_csv(ws_file_loc)
 # Define matrices to multiply
 
 rs = user_df.iloc[:,3:198]
-ws = ws_df.iloc[:-1,1:-1]
+ws = ws_df.iloc[:195,1:-1]
 
 # Define weight vector, TODO: add column to ws_skill_matrix to use as weight vector /Done 
 
-wv = ws_df.iloc[:-1,-1]
+wv = ws_df.iloc[:195,-1]
 
 # Multiply WS matrix by wv
 
@@ -38,12 +38,37 @@ ws_w = ws.mul(wv, axis = 0)
 
 am = rs.dot(ws_w.set_index(ws_df.iloc[:195,0])).set_index(user_df.iloc[:215,0])
 
-print(am)
+# Calculate Resources Needed for each WS (rn).
+# Create intermediate table to make calculations.
 
-#TODO: Calculate # of resources to assign to each WS
-# Add as a bottom row at ws_df? ws_df.loc[199] = [Generated vector with corresponding values]
+rn = ws_df[ws_df.index.isin([190, 195, 196])]
 
-#TODO: WS priority list to assign resources /Done, added as last row in ws_df
-#TODO: Loop through WS priority list allocating resources by sorting corresponding am column
-#TODO: Pick top resources needed from sorted column to match capacity needs, assing to WS
-#TODO: Remove allocated resources by id_emp from am matrix
+# Removing unnecesary row and transposing to make column operations easier.
+
+rn = rn.drop(['weight'], axis=1).T
+
+new_header = rn.iloc[0] #grab the first row for the header
+rn = rn[1:] #take the data less the header row
+rn.columns = new_header #set the header row as the df header
+
+# Add column with number of resources needed (R_N).
+
+rn['R_N'] = np.where(rn['Day Shift'] == 1, rn['Capacity']/540, rn['Capacity']/465)
+
+# Edit R_N float format. LoL, Not needed but i wanted to know how to do it.
+# rn['R_N'] = rn['R_N'].map('{:,.2f}'.format)
+
+# Sort R_N table by WS priority.
+
+rn.sort_values('Priority')
+
+# Write Allocation Matrix to .CSV
+
+am_output = r'C:\Users\liceaga\Desktop\Resource_Allocation\am_matrix.csv'
+am.to_csv(am_output)
+
+# Loop to allocate resources and update matrices.
+for i in rn.index.values:
+    am.sort_values(i)
+    am
+    print(i)
