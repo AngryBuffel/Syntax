@@ -68,7 +68,15 @@ am_output = r'C:\Users\liceaga\Desktop\Resource_Allocation\am_matrix.csv'
 am.to_csv(am_output)
 
 # Loop to allocate resources and update matrices.
+# Loop to allocate resources and update matrices.
+out_alloc= pd.DataFrame()
+c = 0 # counter for index matching between tables
 for i in rn.index.values:
     am.sort_values(i)
-    am
-    print(i)
+    selected = am.index.values[:int(rn.iloc[c][3])]
+    sel_col = pd.Series(data=selected, index=None, dtype=str)
+    z = pd.concat([out_alloc, sel_col], ignore_index=False, axis=1)
+    am = am.drop(selected)
+    print(z)
+    c += 1
+    
